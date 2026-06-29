@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  /* High fidelity custom micro-interaction animations */
+  --animate-shine: shine 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  --animate-fade-in: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  /* Elegant Dark Theme Color System */
+  --color-brand-bg: #050505;
+  --color-brand-card: #0e0e0e;
+  --color-brand-sidebar: #0a0a0a;
+  --color-brand-item: #111111;
+  --color-brand-item-hover: #161616;
+  --color-brand-input: #000000;
+  --color-brand-border: rgba(255, 255, 255, 0.08);
+  --color-brand-border-subtle: rgba(255, 255, 255, 0.05);
+  --color-brand-border-active: #333333;
+  --color-brand-accent-green: #10b981;
+  --color-brand-accent-red: #ef4444;
+
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%);
+    }
+    50%, 100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Custom styles for smooth scrollbar inside panels with Elegant Dark aesthetics */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+body {
+  background-color: #050505;
+  color: #e5e7eb;
+}

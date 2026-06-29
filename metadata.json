@@ -1,0 +1,8 @@
+{
+  "name": "PNL Card Studio",
+  "description": "Generate premium high-fidelity crypto and NFT PNL Cards matching professional social media styles with multi-wallet management, custom presets, and automatic trading simulations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
