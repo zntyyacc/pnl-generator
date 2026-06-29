@@ -201,7 +201,7 @@ export const CardCustomizer: React.FC<CardCustomizerProps> = ({
 
       // 2. Fetch semua transaksi NFT (ERC-721) wallet ini untuk contract ini
       const txRes = await fetch(
-        `https://api.etherscan.io/api?module=account&action=tokennfttx&contractaddress=${contractAddr}&address=${walletAddr}&sort=asc&apikey=${etherscanKey}`
+        `https://api.etherscan.io/v2/api?chainid=1&module=account&action=tokennfttx&contractaddress=${contractAddr}&address=${walletAddr}&sort=asc&apikey=${etherscanKey}`
       );
       if (!txRes.ok) throw new Error('Gagal fetch dari Etherscan');
       const txData = await txRes.json();
@@ -224,7 +224,7 @@ export const CardCustomizer: React.FC<CardCustomizerProps> = ({
       const getTxValue = async (hash: string): Promise<number> => {
         try {
           const r = await fetch(
-            `https://api.etherscan.io/api?module=proxy&action=eth_getTransactionByHash&txhash=${hash}&apikey=${etherscanKey}`
+            `https://api.etherscan.io/v2/api?chainid=1&module=proxy&action=eth_getTransactionByHash&txhash=${hash}&apikey=${etherscanKey}`
           );
           const d = await r.json();
           const weiHex = d?.result?.value;
