@@ -169,9 +169,10 @@ export const CardCustomizer: React.FC<CardCustomizerProps> = ({
   // Fetch real PNL dari Etherscan berdasarkan wallet + contract address
   const [isFetchingPNL, setIsFetchingPNL] = useState(false);
   const [pnlFetchError, setPnlFetchError] = useState<string | null>(null);
+  const [manualWalletAddress, setManualWalletAddress] = useState('');
 
   const runSimulation = async () => {
-    const walletAddr = selectedWalletAddress || config.walletAddress;
+    const walletAddr = selectedWalletAddress || manualWalletAddress.trim();
     const contractAddr = config.contractAddress;
     const etherscanKey = import.meta.env.VITE_ETHERSCAN_API_KEY;
 
@@ -425,6 +426,19 @@ export const CardCustomizer: React.FC<CardCustomizerProps> = ({
               <div className="flex items-start gap-2 bg-red-950/40 border border-red-500/20 rounded-lg p-3">
                 <AlertCircle className="w-3.5 h-3.5 text-red-400 shrink-0 mt-0.5" />
                 <p className="text-[11px] text-red-400 leading-relaxed">{pnlFetchError}</p>
+              </div>
+            )}
+
+            {!selectedWalletAddress && (
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-semibold text-zinc-400 uppercase tracking-wider">Wallet Address</label>
+                <input
+                  type="text"
+                  value={manualWalletAddress}
+                  onChange={e => setManualWalletAddress(e.target.value)}
+                  placeholder="0x... (wallet Ethereum lo)"
+                  className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white placeholder:text-zinc-600 focus:outline-none focus:border-white/30"
+                />
               </div>
             )}
 
